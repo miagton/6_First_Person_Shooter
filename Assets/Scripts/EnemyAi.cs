@@ -61,4 +61,8 @@ public class EnemyAi : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, agroRadius);
     }
+    public void SetProvoke(bool setValue)
+    {
+        isProvoked = setValue;
+    }
 }
