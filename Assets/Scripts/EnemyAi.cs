@@ -26,6 +26,7 @@ public class EnemyAi : MonoBehaviour
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (isProvoked)
         {
+            
             EngadgeTarget();
         }
         else if(distanceToPlayer <= agroRadius)
@@ -49,8 +50,9 @@ public class EnemyAi : MonoBehaviour
 
     private void Attack()
     {
+        transform.LookAt(player);
         animator.SetBool("isAttacking", true);
-        print("Attacking" + player.name);
+        
     }
 
     private void Chase()
@@ -68,8 +70,8 @@ public class EnemyAi : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, agroRadius);
     }
-    public void SetProvoke(bool setValue)
+    public void SetProvoke()
     {
-        isProvoked = setValue;
+        isProvoked = true;
     }
 }

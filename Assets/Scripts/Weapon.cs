@@ -14,7 +14,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] float weaponRange = 100f;
     [SerializeField] float weaponDamage = 25f;
 
-    
+    [Header("Weapon attributes")]
+    [SerializeField] AudioClip gunShot = null;
+
+
+    AudioSource audio;
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -25,13 +33,14 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        PlayShootEffect();
+        PlayShootingEffects();
         ProccesRaycast();
 
     }
 
-    private void PlayShootEffect()
+    private void PlayShootingEffects()
     {
+        audio.PlayOneShot(gunShot,0.5f);
         shootEffect.Play();
     }
 
@@ -46,7 +55,7 @@ public class Weapon : MonoBehaviour
             {
 
                 hit.transform.gameObject.GetComponent<EnemyHealth>().ReciveDamage(weaponDamage);
-                hit.transform.gameObject.GetComponent<EnemyAi>().SetProvoke(true);
+              //  hit.transform.gameObject.GetComponent<EnemyAi>().SetProvoke();
 
             }
         }

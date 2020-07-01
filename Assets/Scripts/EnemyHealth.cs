@@ -7,19 +7,23 @@ using UnityEngine.AI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float enemyHealth = 100;
+    [SerializeField] AudioClip deathSFX = null;
 
     Animator animator;
     NavMeshAgent agent;
+    AudioSource audioSource;
    
     private void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Die()
     {
 
+        audioSource.PlayOneShot(deathSFX, 3f);
         gameObject.GetComponent<EnemyAi>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
        
@@ -32,6 +36,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void ReciveDamage(float damage)
     {
+        BroadcastMessage("SetProvoke");
         enemyHealth-=damage;
         if (enemyHealth < 1)
         {
