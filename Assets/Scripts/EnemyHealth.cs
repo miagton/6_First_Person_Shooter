@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
         audioSource.PlayOneShot(deathSFX, 3f);
         //gameObject.GetComponent<EnemyAi>().enabled = false;
-        //gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
        
         animator.ResetTrigger("Move");
         animator.SetTrigger("Die");

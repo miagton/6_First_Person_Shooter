@@ -213,6 +213,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2962650970144397246, guid: dfa27699c672cf64499188224c2ac71c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4913102856172123103, guid: dfa27699c672cf64499188224c2ac71c,
         type: 3}
       propertyPath: ammoAmount
