@@ -12,7 +12,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotGun PickUp
       objectReference: {fileID: 0}
+    - target: {fileID: 3749940356942029475, guid: 10a754a237f2cc74db208bca71381916,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 352e1939012eddc46bfb134e3dc8d126, type: 2}
     - target: {fileID: 4214382455975568166, guid: 10a754a237f2cc74db208bca71381916,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 352e1939012eddc46bfb134e3dc8d126, type: 2}
+    - target: {fileID: 4860957050229666533, guid: 10a754a237f2cc74db208bca71381916,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 352e1939012eddc46bfb134e3dc8d126, type: 2}
+    - target: {fileID: 5687447796180682487, guid: 10a754a237f2cc74db208bca71381916,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

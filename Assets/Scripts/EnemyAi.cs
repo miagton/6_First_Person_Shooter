@@ -6,23 +6,27 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] Transform player = null;
     [SerializeField] float agroRadius = 20f;
 
 
     float distanceToPlayer = Mathf.Infinity;
+    bool isProvoked = false;
+    Transform player;
     NavMeshAgent agent;
     Animator animator;
-    bool isProvoked = false;
+    EnemyHealth health;
     private void Start()
     {
+        player = FindObjectOfType<PlayerHealth>().transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        health = GetComponent<EnemyHealth>();
     }
 
 
     void Update()
     {
+        if (health.IsDead()) return;
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (isProvoked)
         {

@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     Animator animator;
     NavMeshAgent agent;
     AudioSource audioSource;
+    bool isDead = false;
    
     private void Start()
     {
@@ -22,10 +23,11 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-
+        if (isDead) return;
+        isDead = true;
         audioSource.PlayOneShot(deathSFX, 3f);
-        gameObject.GetComponent<EnemyAi>().enabled = false;
-        gameObject.GetComponent<Collider>().enabled = false;
+        //gameObject.GetComponent<EnemyAi>().enabled = false;
+        //gameObject.GetComponent<Collider>().enabled = false;
        
         animator.ResetTrigger("Move");
         animator.SetTrigger("Die");
@@ -43,5 +45,10 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
        
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }
