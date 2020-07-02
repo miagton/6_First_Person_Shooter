@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] Camera fpsCamera;
+    [SerializeField] TextMeshProUGUI ammoText;
     [Header("VFX")]
     [SerializeField] ParticleSystem shootEffect;
     [SerializeField] GameObject hitEffect;
@@ -35,12 +37,17 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
-       
+        DisplayAmmo();
         if (Input.GetButtonDown("Fire1")&&canShoot)
         {
             
            StartCoroutine( Shoot());
         }
+    }
+
+    private void DisplayAmmo()
+    {
+        ammoText.text = "Ammo : " + myAmmo.GetAmmoAmount(ammoType).ToString();
     }
 
     private IEnumerator Shoot()
