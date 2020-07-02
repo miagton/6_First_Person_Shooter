@@ -134,6 +134,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6931111077280784749}
     m_Modifications:
+    - target: {fileID: 1193888321, guid: dfa27699c672cf64499188224c2ac71c, type: 3}
+      propertyPath: weaponDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 681037282999827044, guid: dfa27699c672cf64499188224c2ac71c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193129042555269573, guid: dfa27699c672cf64499188224c2ac71c,
+        type: 3}
+      propertyPath: zoomPower
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050015041724658507, guid: dfa27699c672cf64499188224c2ac71c,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1419100417956706719}
     - target: {fileID: 2962650970144361370, guid: dfa27699c672cf64499188224c2ac71c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,11 +213,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4913102856172123103, guid: dfa27699c672cf64499188224c2ac71c,
+        type: 3}
+      propertyPath: ammoAmount
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfa27699c672cf64499188224c2ac71c, type: 3}
 --- !u!4 &4227995027994882428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2962650970144361370, guid: dfa27699c672cf64499188224c2ac71c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1419100419001121510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1419100417956706719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1338082169, guid: dfa27699c672cf64499188224c2ac71c,
     type: 3}
   m_PrefabInstance: {fileID: 1419100419001121510}
   m_PrefabAsset: {fileID: 0}

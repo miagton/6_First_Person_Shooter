@@ -70,8 +70,22 @@ public class EnemyAi : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, agroRadius);
     }
+
+    public bool IsAgrovated()
+    {
+        return isProvoked;
+    }
     public void SetProvoke()
     {
         isProvoked = true;
+     Collider[] hitObjects=   Physics.OverlapSphere(transform.position, agroRadius);
+        foreach(var obj in hitObjects)
+        {
+            
+            if (obj.CompareTag("Enemy")&& !obj.gameObject.GetComponent<EnemyAi>().IsAgrovated())
+            {
+                obj.gameObject.GetComponent<EnemyAi>().SetProvoke();
+            }
+        }
     }
 }

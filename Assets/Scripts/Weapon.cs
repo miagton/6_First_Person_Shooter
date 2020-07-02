@@ -13,29 +13,59 @@ public class Weapon : MonoBehaviour
     [Header("Weapon attributes")]
     [SerializeField] float weaponRange = 100f;
     [SerializeField] float weaponDamage = 25f;
+    [SerializeField] float timeBetweenShots = 0.3f;
+    [SerializeField] AmmoType ammoType;
 
-    [Header("Weapon attributes")]
+    [Header("Weapon sounds")]
     [SerializeField] AudioClip gunShot = null;
+    [SerializeField] AudioClip emptyClip = null;
 
-
+    bool canShoot = true;
+    
     AudioSource audio;
+    Ammo myAmmo;
+    private void OnEnable()
+    {
+        canShoot = true;
+    }
     private void Start()
     {
         audio = GetComponent<AudioSource>();
+        myAmmo = FindObjectOfType<Ammo>();
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+       
+        if (Input.GetButtonDown("Fire1")&&canShoot)
         {
-            Shoot();
+            
+           StartCoroutine( Shoot());
         }
     }
 
-    private void Shoot()
+    private IEnumerator Shoot()
     {
+        canShoot = false;
+        int ammoLeft = myAmmo.GetAmmoAmount(ammoType);
+       
+        if (ammoLeft > 0)
+        {
+            ProccesFiring();
+        }
+        else
+        {
+            audio.PlayOneShot(emptyClip);
+        }
+        yield return new WaitForSeconds(timeBetweenShots);
+        canShoot = true;
+
+    }
+
+    private void ProccesFiring()
+    {
+        myAmmo.DecreaseAmmoAmount(ammoType);
         PlayShootingEffects();
         ProccesRaycast();
-
     }
 
     private void PlayShootingEffects()
@@ -55,7 +85,7 @@ public class Weapon : MonoBehaviour
             {
 
                 hit.transform.gameObject.GetComponent<EnemyHealth>().ReciveDamage(weaponDamage);
-              //  hit.transform.gameObject.GetComponent<EnemyAi>().SetProvoke();
+              
 
             }
         }
@@ -67,7 +97,8 @@ public class Weapon : MonoBehaviour
 
     private void CreateHitEffect(RaycastHit hit)
     {
-       GameObject impactVFX= Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        GameObject impactVFX= Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactVFX, 0.2f);
     }
+    
 }
